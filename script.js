@@ -38,7 +38,7 @@ const dnsServers = [{
     allowCors: true,
     ips: ["1.1.1.1", "1.0.0.1"]
 }, {
-    name: "ControlD", url: "https://freedns.controld.com/p0", ips: ["76.76.2.0", "76.223.122.150"]
+    name: "ControlD", url: "https://dns.controld.com/1xiyltsg0e1", type: "get", allowCors: true, ips: ["76.76.2.136", "76.76.10.136"]
 }, {
     name: "DNS.SB",
     url: "https://doh.dns.sb/dns-query",
