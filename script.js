@@ -333,7 +333,7 @@ function updateResult(server) {
     // Update row with basic information
     row.innerHTML = `
         <td class="text-left py-2 px-4 dark:text-gray-300">${server.name} 
-        <span class="copy-icon" onclick="copyToClipboard('DoH Server URL: ${server.url}' + '\\n' + 'IP Addresses: ${server.ips.join(', ')}', this)">📋</span></td>
+        <span class="copy-icon" onclick="copyToClipboard('DoH Server URL: ${server.url}' + '\\n' + 'IP Addresses: ${server.ips.join(', ')}', this, event)">📋</span></td>
         <td class="text-center py-2 px-4 dark:text-gray-300">${server.speed.min !== 'Unavailable' ? server.speed.min.toFixed(2) : 'Unavailable'}</td>
         <td class="text-center py-2 px-4 dark:text-gray-300">${server.speed.median !== 'Unavailable' ? server.speed.median.toFixed(2) : 'Unavailable'}</td>
         <td class="text-center py-2 px-4 dark:text-gray-300"> ${server.speed.avg !== 'Unavailable' ? server.speed.avg.toFixed(2) : 'Unavailable'}</td>
@@ -342,7 +342,7 @@ function updateResult(server) {
 
     // Populate the detailed view with timings for each hostname
     detailsRow.innerHTML = `
-    <td colspan="4" class="py-2 px-4 dark:bg-gray-800 dark:text-gray-300">
+    <td colspan="5" class="py-2 px-4 dark:bg-gray-800 dark:text-gray-300">
         <div>Timings for each hostname:</div>
         <ul>
             ${server.individualResults.map(result => {
@@ -407,7 +407,7 @@ function sortTable(columnIndex) {
     }
 }
 
-function copyToClipboard(text, buttonElement) {
+function copyToClipboard(text, buttonElement, event) {
     event.stopPropagation();
     navigator.clipboard.writeText(text).then(() => {
         // Change button state to indicate success
